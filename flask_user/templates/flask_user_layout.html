@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Başkaya Airlines - Türkiye'nin En Güvenli Uçuş Firması</title>
+    <!-- Bootstrap <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        hr { border-color: #cccccc; margin: 0; }
+        .no-margins { margin: 0px; }
+        .with-margins { margin: 10px; }
+        .col-centered { float: none; margin: 0 auto; }
+    </style>
+
+    {# *** Allow sub-templates to insert extra html to the head section *** #}
+    {% block extra_css %}{% endblock %}
+  </head>
+
+
+<body>
+    {% block body %}
+    <div id="header-div" class="clearfix with-margins">
+        <div class="pull-left"><a href="/"><h1 class="no-margins">  Başkaya Airlines</h1></a></div>
+        <div class="pull-right">
+            {% if call_or_get(current_user.is_authenticated) %}
+                <a href="{{ url_for('user.edit_user_profile') }}">{{ current_user.username or current_user.email }}</a>
+                &nbsp; | &nbsp;
+                <a href="/sepetim">{%trans%}Sepetim{%endtrans%}</a>
+                &nbsp; | &nbsp;
+                <a href="/biletlerim">{%trans%}Biletlerim{%endtrans%}</a>
+                &nbsp; | &nbsp;
+                <a href="{{ url_for('user.logout') }}">{%trans%}Oturum Kapat{%endtrans%}</a>
+            {% else %}
+                <a href="{{ url_for('user.login') }}">{%trans%}Oturum Aç{%endtrans%}</a>
+            {% endif %}
+        </div>
+    </div>
+    {% block menu %}
+    <br><div id="menu-div" class="with-margins">
+        <center>
+                <a href="/"><button style="font-size: medium; width: 140px; margin-right: 10px;" class="btn btn-info">
+                    {%trans%} Anasayfa {%endtrans%}</button></a>
+                <a href="/ucus_ekle"><button style="font-size: medium; width: 140px; margin-right: 10px;" class="btn btn-info">
+                    {%trans%} Uçuş Ekle {%endtrans%}</button></a>
+                <a href="/ucus_duzenle"><button style="font-size: medium; width: 140px; margin-right: 10px;" class="btn btn-info">
+                    {%trans%} Uçuş Düzenle {%endtrans%}</button></a>
+                <a href="/ucus_sil"><button style="font-size: medium; width: 140px; margin-right: 10px;" class="btn btn-info">
+                    {%trans%} Uçuş Sil {%endtrans%}</button></a>
+                <a href="/ucus_listele"><button style="font-size: medium; width: 140px; margin-right: 10px;" class="btn btn-info">
+                    {%trans%} Uçuşları Listele {%endtrans%}</button></a>
+                <a href="/doluluk_orani"><button style="font-size: medium; width: 140px; margin-right: 10px;" class="btn btn-info">
+                    {%trans%} Doluluk Oranı {%endtrans%}</button></a>
+            
+        </center>
+    </div><br>
+    {% endblock %}
+    <hr class="no-margins"/>
+
+    <div id="main-div" class="with-margins">
+    {# One-time system messages called Flash messages #}
+    {% block flash_messages %}
+        {%- with messages = get_flashed_messages(with_categories=true) -%}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category=='error' %}
+                        {% set category='danger' %}
+                    {% endif %}
+                    <div class="alert alert-{{category}}">{{ message|safe }}</div>
+                {% endfor %}
+            {% endif %}
+        {%- endwith %}
+    {% endblock %}
+
+    {% block main %}
+        {% block content %}{% endblock %}
+    {% endblock %}
+    </div>
+
+    <br/>
+    <hr class="no-margins"/>
+    <div id="footer-div" class="clearfix with-margins">
+        <div class="pull-left"><b>Başkaya Air</b> - Türkiye'nin En Güvenli Uçuş Firması</div>
+        <div class="pull-right">&copy; {{ user_manager.USER_COPYRIGHT_YEAR }} Copyright</div>
+    </div>
+    {% endblock %}
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    {# *** Allow sub-templates to insert extra html to the bottom of the body *** #}
+    {% block extra_js %}{% endblock %}
+
+  </body>
+</html>
