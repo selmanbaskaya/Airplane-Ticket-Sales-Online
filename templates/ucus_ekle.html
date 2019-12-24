@@ -1,0 +1,45 @@
+{% extends "flask_user_layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <title>Document</title>
+
+</head>
+<body><br>
+    <center>
+        <h2>{%trans%} <span style="color:cadetblue; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">GÜVENLİ UÇUŞ SEFER BİLGİLERİNİ GİRİNİZ</span> {%endtrans%}</h2>
+        <br></center><hr><br> 
+        <center>
+    <div style="background-color:#5bc0de; padding: 20px; border-radius: 5px; width: 500px; color: white;">  
+        <form action = "{{ url_for('sefer_ekle') }}", method="POST">
+            <span style="font-weight: bold; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                Nereden - Nereye: </span>
+            <input style="border-radius: 2px; padding: 3px; width: 140px; color: teal;" type="text" name="rota" ><br><br>
+            <span style="font-weight: bold; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                Sefer Tarihi: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+            <input style="border-radius: 2px; padding: 3px; width: 140px; color: teal;" type="text" name="tarih" ><br><br>
+    
+            <span style="margin-right: 41px; font-weight: bold; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                Kalkış Saati: </span>
+            <input style="border-radius: 2px; padding: 3px; width: 140px; color: teal;" type="text" name="saat" ><br><br>
+    
+            <span style="font-weight: bold; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                Koltuk Sayısı: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+            <input style="border-radius: 2px; margin-left: 1px; padding: 3px; width: 140px; color: teal;" type="text" name="koltuk" ><br><br>  
+            <span style="font-weight: bold; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                Ücret Tarifesi: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+            <input style="border-radius: 2px; margin-left: 3px; padding: 3px; width: 140px; color: teal;" type="text" name="ucret" ><br><br>
+            <a href="/sefer_ekle"><button style="margin-left: 125px;" type="submit" class="btn btn-success">Uçuş Seferini Ekle</button></a>
+        </form>
+    </div></center>
+    
+</body>
+</html>                  
+{% endblock %}

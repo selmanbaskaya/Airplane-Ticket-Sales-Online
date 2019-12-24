@@ -1,0 +1,21 @@
+{% extends "flask_user_layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+
+</head>
+<body><br>
+        <center>
+            <h2>{%trans%} <span style="color:cadetblue; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">TÜRKİYE'NİN EN GÜVENLİ UÇUŞ FİRMASINA HOŞGELDİNİZ</span> {%endtrans%}</h2>
+            <br><hr><br><p><a href={{ url_for('user.register') }}><button style="font-size: large; width: 300px;" class="btn btn-warning">{%trans%} Kayıt Olmak İçin Tıklayın{%endtrans%}</button></a></p>
+            <br><p><a href={{ url_for('user.login') }}><button style="font-size: large; width: 300px;" class="btn btn-success">{%trans%}Giriş Yapmak İçin Tıklayın{%endtrans%}</button></a></p>
+        </center>
+<br></body>
+</html>                  
+{% endblock %}
