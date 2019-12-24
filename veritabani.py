@@ -307,4 +307,4 @@ def rezervasyon_sil():
             return render_template("mesaj.html", kayitlar = msg)
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(threaded=True, port=5000)
